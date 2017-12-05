@@ -28,7 +28,6 @@ node('docker') {
          */
         stage('Build') {
             docker.build('jenkins')
-            docker.build('jenkins:alpine', '--file Dockerfile-alpine .')
         }
 
         stage('Test') {
@@ -61,8 +60,6 @@ node('docker') {
         stage('Publish') {
             infra.withDockerCredentials {
                 sh './publish.sh'
-                sh './publish.sh --variant alpine'
-                sh './publish.sh --variant slim'
             }
         }
     }
