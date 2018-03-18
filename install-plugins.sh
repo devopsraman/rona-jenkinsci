@@ -250,7 +250,7 @@ main() {
     fi
 
     echo "Cleaning up locks"
-    rm -r "$REF_DIR"/*.lock
+    find "$REF_DIR" -name "*.lock" -delete
 }
 
 main "$@"
